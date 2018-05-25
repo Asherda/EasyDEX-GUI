@@ -31,8 +31,8 @@ script:
 - yarn install && yarn add webpack webpack-dashboard
 - cd react && yarn install && yarn run build
 after_script:
-- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd ../.. && tar -czf $PROJECT.tar.gz $PROJECT && gsutil
-  cp $PROJECT.tar.gz gs://$BUCKET/$PROJECT/$TRAVIS_BRANCH/; fi
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cd ../.. && ls && tar -czvf $PROJECT.tar.gz
+  $PROJECT && gsutil cp $PROJECT.tar.gz gs://$BUCKET/$PROJECT/$TRAVIS_BRANCH/; fi
 before_install:
-- openssl aes-256-cbc -K $encrypted_6b9be889f511_key -iv $encrypted_6b9be889f511_iv
+- openssl aes-256-cbc -K $encrypted_02bcc34985eb_key -iv $encrypted_02bcc34985eb_iv
   -in AUTH_KEY.json.enc -out AUTH_KEY.json -d
